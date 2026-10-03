@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-white font-sans antialiased;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  overscroll-behavior: none;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button, a { touch-action: manipulation; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #5e8eff;
+  outline-offset: 2px;
+}
+input, textarea { user-select: text; -webkit-user-select: text; }
+
+@layer components {
+  .icon-button { @apply w-11 h-11 shrink-0 rounded-xl bg-slate-800 border border-slate-700/60 flex items-center justify-center text-slate-200 text-xl transition active:scale-95; }
+  .input-field { @apply w-full min-h-11 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-brand-400; }
+  .field-label { @apply block text-sm font-medium text-slate-300; }
+  .tag { @apply inline-flex px-2 py-0.5 rounded-md bg-slate-800 text-[11px] text-slate-400; }
+  .tag-blue { @apply bg-blue-500/15 text-blue-300; }
+}
+
+/* IPA transcription: use a system font that actually ships the phonetic glyphs.
+   Inter / Manrope and the default monospace font lack many IPA symbols
+   (ə, ɛ, ˈ, ŋ ...), which is why they rendered as empty boxes. */
+.ipa {
+  font-family: "Noto Sans", "Roboto", "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 107, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Card flip animation */
+.card-flip {
+  perspective: 1000px;
+}
+.card-flip-inner {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.card-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Progress ring */
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease-out;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Swipe hint */
+@keyframes swipeHint {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+}
+.swipe-hint {
+  animation: swipeHint 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
