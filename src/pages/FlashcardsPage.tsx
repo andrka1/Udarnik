@@ -84,7 +84,7 @@ export default function FlashcardsPage() {
           <h1 className="text-lg font-display font-bold text-white">
             {isAll ? "Карточки" : categoryInfo?.name}
           </h1>
-          <p className="text-xs text-slate-400">{isAll ? "Все слова задания 4" : "Тренировка по теме"}</p>
+          <p className="text-xs text-slate-400">{isAll ? "Все слова из списка" : "Тренировка по теме"}</p>
         </div>
         <button
           onClick={() => {

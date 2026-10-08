@@ -92,7 +92,7 @@ export function addCustomWord(word: string, hint?: string): string | null {
   if (!w) return "Введи слово";
   if (!/^[а-яёА-ЯЁ-]+$/.test(w)) return "Только русские буквы";
   const upper = [...w].filter((c) => c !== c.toLowerCase());
-  if (upper.length !== 1 || stressIndex(w) < 0) return "Выдели ударную гласную ОДНОЙ заглавной буквой: звонИт";
+  if (upper.length !== 1 || stressIndex(w) < 0) return "Выдели ударную гласную ОДНОЙ заглавной буквой: облегчИть";
   if (getAllWords().some((x) => x.id === w)) return "Такое слово уже есть";
   update((p) => {
     p.customWords.push({ id: w, word: w, category: "custom", hint: hint?.trim() || undefined, custom: true });

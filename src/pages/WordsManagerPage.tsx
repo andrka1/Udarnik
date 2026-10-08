@@ -66,7 +66,7 @@ export default function WordsManagerPage() {
       {/* Add */}
       <div className="mb-6 p-4 rounded-2xl bg-slate-800/60 border border-slate-700/40">
         <h2 className="text-sm font-semibold text-white mb-1">Добавить своё слово</h2>
-        <p className="text-xs text-slate-400 mb-3">Ударную гласную пиши заглавной: звонИт, тОрты, бралА</p>
+        <p className="text-xs text-slate-400 mb-3">Ударную гласную пиши заглавной: облегчИть, каталОг, вручИт</p>
         <input value={newWord} onChange={(e) => setNewWord(e.target.value)} placeholder="Слово, напр. щавЕль" className="input-field mb-2" />
         <input value={newHint} onChange={(e) => setNewHint(e.target.value)} placeholder="Пометка (необязательно)" className="input-field mb-2" />
         {error && <p className="text-xs text-red-400 mb-2">{error}</p>}
